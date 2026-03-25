@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PhanMemSongAm1
+namespace PhanMemSongAm
 {
     internal class NameDetector
     {
-        public NameDetector() { }
+        //public NameDetector() { }
 
-        public List<string> Detector(string message) 
+        public List<string> Detect(string message) 
         {
             var names = new List<string>();
             var elements = message.Split(' ');
@@ -21,6 +21,11 @@ namespace PhanMemSongAm1
                 {
                     names.Add(elements[i]);
                 }
+            }
+
+            for (int j =0; j <names.Count; j++)
+            {
+                Console.WriteLine($"name: {names[j]}");
             }
 
             return names;

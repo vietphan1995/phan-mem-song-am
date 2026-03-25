@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhanMemSongAm1
+namespace PhanMemSongAm
 {
     public class Log
     {
