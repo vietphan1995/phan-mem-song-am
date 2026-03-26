@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace PhanMemSongAm
 {
-    public class BagOfPositive
+    public static class BagOfPositive
     {
 
-
-        private Dictionary<string, int> _keyWords = new Dictionary<string, int>() 
+        private static Dictionary<string, int> _keyWords = new Dictionary<string, int>() 
         {
             { "vui", 1 },
             { "cuoi", 2 },
             { "dong y", 3 },
-            { "chap nhan", 4 }
+            { "chap nhan", 4 },
+            { "ve nha", 5 },
+            { "duoc", 6 },
+            { "tan duong", 7 },
+            { "dung buon nua", 8 }
         };
 
-        public Dictionary<string, int> GetMatchedWords(string message)
+        public static Dictionary<string, int> GetMatchedWords(string message)
         {
             var matchedWords = new Dictionary<string, int>();
 
-            foreach (var keyWord in this._keyWords)
+            foreach (var keyWord in _keyWords)
             {
                 if (message.Contains(keyWord.Key))
                 {
@@ -33,15 +36,15 @@ namespace PhanMemSongAm
             return matchedWords;
         }
 
-        public int GetPoint(string message)
+        public static int GetPoint(string message)
         {
             var point = 0;
 
-            var matchedWords = this.GetMatchedWords(message);
+            var matchedWords = GetMatchedWords(message);
 
-            foreach (var keyWord in matchedWords)
+            foreach (var matchedWord in matchedWords)
             {
-                point += matchedWords[keyWord.Key];
+                point += matchedWords[matchedWord.Key];
             }
 
             return point;

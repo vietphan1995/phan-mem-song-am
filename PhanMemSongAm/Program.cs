@@ -1,10 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Runtime.CompilerServices;
 
-using System;
-using System.Threading;
-
-
 namespace PhanMemSongAm
 {
     class Program
@@ -20,22 +16,18 @@ namespace PhanMemSongAm
 
             sleepThread.Start();
 
-            var nameDetector = new NameDetector();
-
             while (_isInSleep)
             {
                 string inputMessage = Console.ReadLine();
+                Console.WriteLine();
+                Console.Write($"[input message]: {inputMessage}");
 
-                Console.WriteLine($"[message]: {inputMessage}");
-
-                nameDetector.Detect(inputMessage);
-
-                var messageCommand = new MessageCommand(inputMessage);
-                messageCommand.Print();
-
-                var bagOfPositive = new BagOfPositive();
-                var point = bagOfPositive.GetPoint(inputMessage);
-                Console.WriteLine($"point: {point}");
+                var message = new Message(inputMessage);
+                message.PrintMe();
+                message.PrintNames();
+                message.PrintParameters();
+                message.PrintPositivePoint();
+                message.TrimDoubleQuote();
             }
 
 
@@ -52,11 +44,7 @@ namespace PhanMemSongAm
                     _isInSleep = true;
                 }
 
-                //Console.WriteLine("start sleep");
-
                 Thread.Sleep(3000);
-
-                //Console.WriteLine("end sleep");
 
                 _isInSleep = false;
             } while (_isInSleep == false);
