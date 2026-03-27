@@ -7,7 +7,6 @@ using static PhanMemSongAm.ParameterList;
 
 namespace PhanMemSongAm
 {
-    // TODO: 2 dau / cua Phuc
     // $iam: "Phuc" $message: "Viet tinh tien di" $with: "Dat" $topic: "Viet tinh tien di"
     // $iam: "Phuc" $message: "Viet ve nha di Viet" $with: "Dat" $topic: "Viet ve nha di Viet"
     public class Command
@@ -145,7 +144,7 @@ namespace PhanMemSongAm
 
             if (this._parameterDict.ContainsKey(IAM_KEY) && this._parameterDict[IAM_KEY] != null)
             {
-                iam = this._parameterDict[IAM_KEY].Value;
+                iam = this._parameterDict[IAM_KEY].Value.Trim();
             }
 
             return iam;
